@@ -1,0 +1,7 @@
+altgraph==0.17
+autopep8==1.5.4
+colorama==0.4.4
+pycodestyle==2.6.0
+pyinstaller==4.2
+pyinstaller-hooks-contrib==2020.11
+toml==0.10.2
