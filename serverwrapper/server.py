@@ -14,6 +14,7 @@ class Server:
         self.minheap = minheap  # in mebibytes
         self.maxheap = maxheap  # in mebibytes
         self.done = False
+        self.popen = None
 
     def start(self):
         os.chdir(os.path.dirname(self.jarlocation))

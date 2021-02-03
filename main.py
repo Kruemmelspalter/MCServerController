@@ -1,16 +1,23 @@
 import serverwrapper.server
-import time
 import threading
 import colorama
+import argparse
 
 if __name__ == "__main__":
     colorama.init()
-    server = serverwrapper.server.Server(
-        "/projects/MC/Server/1.15.2/spigot-1.15.2.jar", 1024, 2048)
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("serverjar")
+    parser.add_argument("--minheap", default=1024, type=int)
+    parser.add_argument("--maxheap", default=1024, type=int)
+
+    args = parser.parse_args()
+
+    server = serverwrapper.server.Server(args.serverjar, args.minheap, args.maxheap)
 
     server.start()
 
-    threading.Thread(target=server.readloop).start() # start readloop for output and 
+    threading.Thread(target=server.readloop).start()  # start readloop for output and
 
     input()  # wait for newline in console to stop the server
     server.stop()
