@@ -1,0 +1,38 @@
+name: PyInstaller Build for Linux and Windows
+on:
+  - push
+  - pull_request
+
+jobs:
+  pyinstaller-linux:
+    name: Build on Linux
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Package Application
+        uses: JackMcKew/pyinstaller-action-linux@main
+        with:
+          path: .
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: main
+          path: dist/linux
+  pyinstaller-windows:
+    name: Build on Windows
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Package Application
+        uses: JackMcKew/pyinstaller-action-windows@main
+        with:
+          path: .
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: main.exe
+          path: dist/windows
