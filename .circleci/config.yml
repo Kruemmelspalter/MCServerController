@@ -12,7 +12,7 @@ jobs:
       - python/install-deps
       - python/save-cache
       - run:
-          command: pip -r requirements.txt; pyinstaller -F --clean main.py
+          command: pyinstaller -F --clean main.py
           name: Build
 
 workflows:
